@@ -21,13 +21,13 @@ enum MenuAction { logout }
 
 class _InicioState extends State<Inicio> {
   int currentPageIndex = 0;
-  
+  static const List<String> navLabels = ['Inicio', 'Predicciones', 'Metas', 'Alertas'];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Inicio', style: TextStyle(fontFamily: 'Lato')),
+        title: Text(navLabels[currentPageIndex], style: const TextStyle(fontFamily: 'Lato')),
         actions: [
           PopupMenuButton<MenuAction>(
             onSelected: (value) async {

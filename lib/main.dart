@@ -22,8 +22,13 @@ Future main() async{
       theme: ThemeData(
             appBarTheme: const AppBarTheme(
             backgroundColor: Color(0xFF75d7e6),
-            foregroundColor: Colors.white //here you can give the text color
-            )
+            foregroundColor: Colors.white, //here you can give the text color
+            shadowColor: Color(0xFF40a0c9),
+            surfaceTintColor: Color(0xFF40a0c9),
+            ),
+            textTheme: TextTheme(
+              bodyLarge: TextStyle(color: Colors.blue),
+            ),
       ),
       home: const HomePage(),
       routes: {
@@ -68,53 +73,6 @@ class HomePage extends StatelessWidget {
       );
   }
 }
-
-/*enum MenuAction { logout }
-
-class Inicio extends StatefulWidget {
-  const Inicio({super.key});
-
-  @override
-  State<Inicio> createState() => _InicioState();
-}
-
-class _InicioState extends State<Inicio> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Inicio'),
-        actions: [
-          PopupMenuButton<MenuAction>(
-            onSelected: (value) async{
-              switch (value){
-                case MenuAction.logout:
-                  // TODO: Handle this case.
-                  final deberiaCerrarSesion = await mostrarDialogoDeCierreSesion(context);
-                  if(deberiaCerrarSesion){
-                    await FirebaseAuth.instance.signOut();
-                    Navigator.of(context).pushNamedAndRemoveUntil(
-                      rutaLogin,
-                      (route) => false,
-                    );
-                  }
-              }
-            }, 
-            itemBuilder: (context) {
-              return const [
-                 PopupMenuItem<MenuAction>(
-                  value: MenuAction.logout,
-                  child: Text('Cerrar sesión')
-                )
-              ];
-            },
-          )
-        ],
-      ),
-      body: const Text('Hola mundo!'),
-    );
-  }
-}*/
 
 Future<bool> mostrarDialogoDeCierreSesion(BuildContext context){
   return showDialog<bool>(
