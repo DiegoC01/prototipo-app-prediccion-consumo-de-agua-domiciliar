@@ -106,7 +106,7 @@ class _InicioState extends State<Inicio> {
             ),
 
             // Metas Nav
-            NavigationDestination(
+            /*NavigationDestination(
               selectedIcon: FaIcon(
                 FontAwesomeIcons.flag,
                 color: Colors.white,
@@ -129,7 +129,7 @@ class _InicioState extends State<Inicio> {
                 color: Colors.white,
               ),
               label: 'Alertas',
-            ),
+            ),*/
           ],
         ),
       ),

@@ -18,12 +18,12 @@ class _AlertasState extends State<Alertas> {
         //body: Text('estas'),
         body: CustomScrollView(
           slivers: [
-            SliverToBoxAdapter(
+            const SliverToBoxAdapter(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(left: 20.0, top: 40.0),
+                    padding: EdgeInsets.only(left: 20.0, top: 40.0),
                     child: Text(
                       'Mis alertas',
                       style: TextStyle(
@@ -33,7 +33,7 @@ class _AlertasState extends State<Alertas> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 20.0, top: 10.0, right: 22.0),
+                    padding: EdgeInsets.only(left: 20.0, top: 10.0, right: 22.0),
                     child: Text(
                       'Para desactivar las notificaciones, pulse el botón a la derecha de la alerta.',
                       style: TextStyle(

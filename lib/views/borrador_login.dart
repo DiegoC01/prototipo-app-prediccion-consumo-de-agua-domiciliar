@@ -5,6 +5,8 @@ import 'package:flutter_application_1/constants/rutas.dart';
 import 'package:flutter_application_1/firebase_options.dart';
 import 'dart:developer' as devtools show log;
 
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 class Login extends StatefulWidget {
   const Login({super.key});
 
@@ -36,124 +38,31 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Container(
-            //width: 360,
-            height: 800,
-            clipBehavior: Clip.antiAlias,
-            decoration: const BoxDecoration(color: Colors.white),
-            child: Stack(
-              children: [
-                Positioned(
-                  left: 43,
-                  top: 321,
-                  child: Container(
-                    width: 272,
-                    height: 50,
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          width: double.infinity,
-                          padding: const EdgeInsets.all(16),
-                          decoration: const ShapeDecoration(
-                            color: Color(0x14212121),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(4),
-                                topRight: Radius.circular(4),
-                              ),
-                            ),
-                          ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Expanded(
-                                child: SizedBox(
-                                  height: 15,
-                                  child: TextFormField(
-                                    controller: _email,
-                                    enableSuggestions: false,
-                                    autocorrect: false,
-                                    keyboardType: TextInputType.emailAddress,
-                                    decoration: const InputDecoration(
-                                      hintText: "Correo electrónico",
-                                    ),
-                                    style: const TextStyle(
-                                      fontSize: 17,
-                                      color: Color.fromARGB(255, 0, 0, 0),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            children: [
+              
+              Container(
+                width: 272,
+                child: Column(
+                  children: [
+                    // LOGO
+                    SizedBox(height: 100),
+                    Container(
+                      width: 191,
+                      height: 191,
+                      decoration: const BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage('assets/images/app_logo.png'),
+                          fit: BoxFit.fill,
                         ),
-                      ],
+                      ),
                     ),
-                  ),
-                ),
-                Positioned(
-                  left: 43,
-                  top: 380,
-                  child: SizedBox(
-                    width: 272,
-                    //height: 50,
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          width: double.infinity,
-                          padding: const EdgeInsets.all(16),
-                          decoration: const ShapeDecoration(
-                            color: Color(0x14212121),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(4),
-                                topRight: Radius.circular(4),
-                              ),
-                            ),
-                          ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Expanded(
-                                child: SizedBox(
-                                  height: 15,
-                                  child: TextFormField(
-                                    controller: _password,
-                                    obscureText: true,
-                                    enableSuggestions: false,
-                                    autocorrect: false,
-                                    decoration: const InputDecoration(
-                                      hintText: "Contraseña",
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                const Positioned(
-                  left: 63,
-                  top: 271,
-                  child: SizedBox(
-                    width: 235,
-                    //height: 89,
-                    child: Text(
+                    SizedBox(height: 30),
+
+                    // Título de inicio de sesión
+                    const Text(
                       'Inicio de sesión',
                       textAlign: TextAlign.center,
                       style: TextStyle(
@@ -165,15 +74,79 @@ class _LoginState extends State<Login> {
                         letterSpacing: 0.15,
                       ),
                     ),
-                  ),
-                ),
-                const Positioned(
-                  left: 75,
-                  top: 578,
-                  child: SizedBox(
-                    width: 235,
-                    height: 89,
-                    child: Text(
+                    SizedBox(height: 25),
+
+                    TextFormField(
+                      controller: _email,
+                      enableSuggestions: false,
+                      autocorrect: false,
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: const InputDecoration(
+                        hintText: "Correo electrónico",
+                      ),
+                      style: const TextStyle(
+                        fontSize: 17,
+                        color: Color.fromARGB(255, 0, 0, 0),
+                      ),
+                    ),
+                    SizedBox(height: 15),
+
+                    TextFormField(
+                      controller: _password,
+                      obscureText: true,
+                      enableSuggestions: false,
+                      autocorrect: false,
+                      decoration: const InputDecoration(
+                        hintText: "Contraseña",
+                      ),
+                    ),
+                    SizedBox(height: 25),
+
+                    // Botón de ingreso al prototipo
+                    ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            foregroundColor: Colors.white,
+                            backgroundColor: const Color(0xff40a0c9),
+                            textStyle: const TextStyle(
+                              fontSize: 14,
+                              fontFamily: 'Lato',
+                            ),
+                          ),
+                          onPressed: () async {
+                            // Lo que se hará después de apretar el botón.
+                            final email = _email.text;
+                            final password = _password.text;
+                            try {
+                              await FirebaseAuth.instance
+                                  .signInWithEmailAndPassword(
+                                      email: email, password: password);
+                              Navigator.of(context).pushNamedAndRemoveUntil(
+                                rutaInicio,
+                                (route) => false,
+                              );
+                            } on FirebaseAuthException catch (e) {
+                              if (e.code == 'user-not-found') {
+                                devtools.log("No se ha encontrado al usuario");
+                              } else if (e.code == 'wrong-password') {
+                                devtools.log("Contraseña incorrecta");
+                              } else {
+                                devtools
+                                    .log('Error al momento de iniciar sesión');
+                                print(e.code);
+                                await mostrarDialogoDeError(
+                                  context,
+                                  'Error al ingresar las credenciales',
+                                );
+                              }
+                            }
+                          },
+                          child: const Text('INGRESAR'),
+                        ),
+                    SizedBox(height: 50),
+
+                    /*
+                    // Sugerencia de iniciar sesión con otros servicios
+                    const Text(
                       'O inicia sesión con',
                       textAlign: TextAlign.center,
                       style: TextStyle(
@@ -185,216 +158,116 @@ class _LoginState extends State<Login> {
                         letterSpacing: 0.15,
                       ),
                     ),
-                  ),
-                ),
-                const Positioned(
-                    left: 125,
-                    top: 687,
-                    child: Center(
-                      child: Text(
-                        '¿No tienes una cuenta?',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 16,
-                          fontFamily: 'Andika',
-                          fontWeight: FontWeight.w400,
-                          height: 0.09,
-                          letterSpacing: 0.15,
-                        ),
-                      ),
-                    )),
-                const Positioned(
-                  left: 59,
-                  top: 447,
-                  child: SizedBox(
-                    width: 162,
-                    height: 23,
-                    child: Text(
-                      'Olvidé mi contraseña',
-                      style: TextStyle(
-                        color: Color(0xFF196B8E),
-                        fontSize: 14,
-                        fontFamily: 'Lato',
-                        fontWeight: FontWeight.w400,
-                        height: 0.12,
-                        letterSpacing: 0.15,
-                      ),
-                    ),
-                  ),
-                ),
-                Positioned(
-                  left: 115,
-                  top: 700,
-                  child: SizedBox(
-                    width: 162,
-                    height: 30,
-                    child: TextButton(
-                      style: TextButton.styleFrom(
-                        foregroundColor: const Color(0xff40a0c9),
-                        textStyle: const TextStyle(
-                          fontSize: 14,
-                          fontFamily: 'Lato',
-                        ),
-                      ),
-                      onPressed: () {
-                        Navigator.of(context).pushNamedAndRemoveUntil(
-                          rutaRegister,
-                          (route) => false,
-                        );
-                      },
-                      child: const Text('REGISTRATE'),
-                    ),
-                  ),
-                ),
-                Positioned(
-                  left: 62,
-                  top: 478,
-                  child: SizedBox(
-                    width: 24,
-                    height: 24,
-                    child: Stack(
+                    SizedBox(height: 20),
+
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Positioned(
-                          left: 3,
-                          top: 3,
-                          child: Container(
-                            width: 18,
-                            height: 18,
-                            decoration: const BoxDecoration(
-                              image: DecorationImage(
-                                image: NetworkImage(
-                                    "https://via.placeholder.com/18x18"),
-                                fit: BoxFit.fill,
-                              ),
-                            ),
+                        IconButton(
+                          icon: const FaIcon(
+                            FontAwesomeIcons.facebook,
+                            size: 40,
+                            color: Color(0xFF40a0c9),
                           ),
+                          tooltip: 'Inicia sesión con facebook',
+                          onPressed: () {
+                            print('No hay na');
+                          },
                         ),
-                        Positioned(
-                          left: 3,
-                          top: 3,
-                          child: SizedBox(
-                            width: 18,
-                            height: 18,
-                            child: Stack(
-                              children: [
-                                Positioned(
-                                  left: 0,
-                                  top: 0,
-                                  child: Container(
-                                    width: 18,
-                                    height: 18,
-                                    decoration: const BoxDecoration(
-                                      image: DecorationImage(
-                                        image: NetworkImage(
-                                            "https://via.placeholder.com/18x18"),
-                                        fit: BoxFit.fill,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Positioned(
-                                  left: -3,
-                                  top: -3,
-                                  child: Container(
-                                    width: 24,
-                                    height: 24,
-                                    decoration: BoxDecoration(
-                                      color: Colors.black
-                                          .withOpacity(0.6000000238418579),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
+                        IconButton(
+                          icon: const FaIcon(
+                            FontAwesomeIcons.google,
+                            size: 40,
+                            color: Color(0xFF40a0c9),
                           ),
+                          tooltip: 'Inicia sesión con Gmail',
+                          onPressed: () {
+                            print('No hay na');
+                          },
+                        ),
+                        IconButton(
+                          icon: const FaIcon(
+                            FontAwesomeIcons.microsoft,
+                            size: 40,
+                            color: Color(0xFF40a0c9),
+                          ),
+                          tooltip: 'Inicia sesión con Microsoft',
+                          onPressed: () {
+                            print('No hay na');
+                          },
                         ),
                       ],
-                    ),
-                  ),
-                ),
-                const Positioned(
-                  left: 86,
-                  top: 482,
-                  child: SizedBox(
-                    width: 130,
-                    height: 16,
-                    child: Text(
-                      'Recordar',
+                    ),*/
+
+                    SizedBox(height: 50),
+
+                    // Pregunta: tienes una cuenta?
+                    const Text(
+                      '¿No tienes una cuenta?',
+                      textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Colors.black,
-                        fontSize: 14,
-                        fontFamily: 'Lato',
+                        fontSize: 16,
+                        fontFamily: 'Andika',
                         fontWeight: FontWeight.w400,
-                        height: 0.12,
+                        height: 0.09,
                         letterSpacing: 0.15,
                       ),
                     ),
-                  ),
-                ),
-                Positioned(
-                  left: 133,
-                  top: 510,
-                  child: Container(
-                    child: SizedBox(
+                    SizedBox(height: 10),
+
+                    // Botón de registro
+                    SizedBox(
+                      width: 162,
                       height: 30,
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          foregroundColor: Colors.white,
-                          backgroundColor: const Color(0xff40a0c9),
+                      child: TextButton(
+                        style: TextButton.styleFrom(
+                          foregroundColor: const Color(0xff40a0c9),
                           textStyle: const TextStyle(
                             fontSize: 14,
                             fontFamily: 'Lato',
                           ),
                         ),
-                        onPressed: () async {
-                          // Lo que se hará después de apretar el botón.
-                          final email = _email.text;
-                          final password = _password.text;
-                          try {
-                            await FirebaseAuth.instance
-                                .signInWithEmailAndPassword(
-                                    email: email, password: password);
-                            Navigator.of(context).pushNamedAndRemoveUntil(
-                              rutaInicio,
-                              (route) => false,
-                            );
-                          } on FirebaseAuthException catch (e) {
-                            if (e.code == 'user-not-found') {
-                              devtools.log("No se ha encontrado al usuario");
-                            } else if (e.code == 'wrong-password') {
-                              devtools.log("Contraseña incorrecta");
-                            } else {
-                              devtools
-                                  .log('Error al momento de iniciar sesión');
-                              devtools.log(e.code);
-                            }
-                          }
+                        onPressed: () {
+                          Navigator.of(context).pushNamedAndRemoveUntil(
+                            rutaRegister,
+                            (route) => false,
+                          );
                         },
-                        child: const Text('INGRESAR'),
+                        child: const Text('REGISTRATE'),
                       ),
                     ),
-                  ),
+                  ],
                 ),
-                Positioned(
-                  left: 87,
-                  top: 60,
-                  child: Container(
-                    width: 191,
-                    height: 191,
-                    decoration: const BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage('assets/images/app_logo.png'),
-                        fit: BoxFit.fill,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
+}
+
+Future<void> mostrarDialogoDeError(
+    BuildContext context, 
+    String text, 
+) {
+
+  return showDialog(
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        title: const Text('Un error ocurrió'),
+        content: Text(text),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: const Text('Ok'),
+          )
+        ],
+      );
+  });
+
 }

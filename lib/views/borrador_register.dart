@@ -15,6 +15,7 @@ class Register extends StatefulWidget {
 class _RegisterState extends State<Register> {
   late final TextEditingController _email;
   late final TextEditingController _password;
+  late final TextEditingController _checkPassword;
   late final TextEditingController _nombre;
 
   @override
@@ -22,6 +23,7 @@ class _RegisterState extends State<Register> {
     // TODO: implement initState
     _email = TextEditingController();
     _password = TextEditingController();
+    _checkPassword = TextEditingController();
     _nombre = TextEditingController();
     super.initState();
   }
@@ -31,6 +33,7 @@ class _RegisterState extends State<Register> {
     // TODO: implement dispose
     _email.dispose();
     _password.dispose();
+    _checkPassword.dispose();
     _nombre.dispose();
     super.dispose();
   }
@@ -38,21 +41,31 @@ class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Container(
-            height: 800,
-            clipBehavior: Clip.antiAlias,
-            decoration: BoxDecoration(color: Colors.white),
-            child: Stack(
-              children: [
-                Positioned(
-                  left: 16,
-                  top: 271,
-                  child: SizedBox(
-                    width: 309,
-                    height: 83,
-                    child: Text(
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            children: [
+              Container(
+                width: 272,
+                child: Column(
+                  children: [
+        
+                    // LOGO
+                    SizedBox(height: 100),
+                    Container(
+                      width: 191,
+                      height: 191,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage('assets/images/app_logo.png'),
+                          fit: BoxFit.fill,
+                        ),
+                      ),
+                    ),
+        
+                    // Título módulo
+                    SizedBox(height: 30),
+                    Text(
                       'Registro de usuario',
                       textAlign: TextAlign.center,
                       style: TextStyle(
@@ -64,304 +77,187 @@ class _RegisterState extends State<Register> {
                         letterSpacing: 0.15,
                       ),
                     ),
-                  ),
-                ),
-                Positioned(
-                  left: 42,
-                  top: 316,
-                  child: Container(
-                    width: 272,
-                    height: 50,
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          width: double.infinity,
-                          padding: const EdgeInsets.all(16),
-                          decoration: ShapeDecoration(
-                            color: Color(0x14212121),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(4),
-                                topRight: Radius.circular(4),
-                              ),
-                            ),
-                          ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Expanded(
-                                child: SizedBox(
-                                  height: 15,
-                                  child: TextField(
-                                    controller: _nombre,
-                                    enableSuggestions: false,
-                                    autocorrect: false,
-                                    keyboardType: TextInputType.emailAddress,
-                                    decoration: const InputDecoration(
-                                      hintText: "Nombre",
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                Positioned(
-                  left: 43,
-                  top: 510,
-                  child: Container(
-                    width: 272,
-                    height: 50,
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          width: double.infinity,
-                          padding: const EdgeInsets.all(16),
-                          decoration: ShapeDecoration(
-                            color: Color(0x14212121),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(4),
-                                topRight: Radius.circular(4),
-                              ),
-                            ),
-                          ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Expanded(
-                                child: SizedBox(
-                                  height: 15,
-                                  child: TextField(
-                                    controller: _password,
-                                    enableSuggestions: false,
-                                    autocorrect: false,
-                                    obscureText: true,
-                                    decoration: const InputDecoration(
-                                      hintText: "Repita contraseña",
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                Positioned(
-                  left: 43,
-                  top: 445,
-                  child: Container(
-                    width: 272,
-                    height: 50,
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          width: double.infinity,
-                          padding: const EdgeInsets.all(16),
-                          decoration: ShapeDecoration(
-                            color: Color(0x14212121),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(4),
-                                topRight: Radius.circular(4),
-                              ),
-                            ),
-                          ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Expanded(
-                                child: SizedBox(
-                                  height: 15,
-                                  child: TextField(
-                                    controller: _password,
-                                    obscureText: true,
-                                    enableSuggestions: false,
-                                    autocorrect: false,
-                                    decoration: const InputDecoration(
-                                      hintText: "Contraseña",
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                Positioned(
-                  left: 43,
-                  top: 380,
-                  child: Container(
-                    width: 272,
-                    height: 50,
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          width: double.infinity,
-                          padding: const EdgeInsets.all(16),
-                          decoration: ShapeDecoration(
-                            color: Color(0x14212121),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(4),
-                                topRight: Radius.circular(4),
-                              ),
-                            ),
-                          ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Expanded(
-                                child: SizedBox(
-                                  height: 15,
-                                  child: TextField(
-                                    controller: _email,
-                                    enableSuggestions: false,
-                                    autocorrect: false,
-                                    keyboardType: TextInputType.emailAddress,
-                                    decoration: const InputDecoration(
-                                      hintText: "Correo electrónico",
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 400.0),
-                  child: Align(
-                    alignment: Alignment.center,
-                    child: Container(
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              foregroundColor: Colors.white,
-                              backgroundColor: const Color(0xff40a0c9),
-                              textStyle: const TextStyle(
-                                fontSize: 14,
-                                fontFamily: 'Lato',
-                              ),
-                            ),
-                            onPressed: () async {
-                              // Lo que se hará después de apretar el botón.
-                              final email = _email.text;
-                              final password = _password.text;
-                  
-                              try {
-                                final userCredential = await FirebaseAuth.instance
-                                    .createUserWithEmailAndPassword(
-                                        email: email, password: password);
-                                //devtools.log(userCredential.toString());
-                              } on FirebaseAuthException catch (e) {
-                                devtools.log(e.code);
-                                if (e.code == 'weak-password') {
-                                  devtools.log("Contraseña muy débil");
-                                } else if (e.code == 'email-already-in-use') {
-                                  devtools
-                                      .log("El correo ingresado ya está en uso");
-                                } else if (e.code == 'invalid-email') {
-                                  devtools.log("El correo ingresado es inválido");
-                                }
-                              }
-                            },
-                            child: const Text('REGISTRATE'),
-                          ),
-                        ],
+                    SizedBox(height: 25),
+        
+                    // Input nombre
+                    TextField(
+                      controller: _nombre,
+                      enableSuggestions: false,
+                      autocorrect: false,
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: const InputDecoration(
+                        hintText: "Nombre",
                       ),
                     ),
-                  ),
-                ),
-                Positioned(
-                  left: 84,
-                  top: 57,
-                  child: Container(
-                    width: 191,
-                    height: 191,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage('assets/images/app_logo.png'),
-                        fit: BoxFit.fill,
+        
+                    SizedBox(height: 15),
+                    //Input Correo
+                    TextField(
+                      controller: _email,
+                      enableSuggestions: false,
+                      autocorrect: false,
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: const InputDecoration(
+                        hintText: "Correo electrónico",
                       ),
                     ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 500.0),
-                  child: Align(
-                    alignment: Alignment.center,
-                    child: Container(
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          TextButton(
-                            style: TextButton.styleFrom(
-                              //foregroundColor: Colors.white,
-                              //backgroundColor: const Color(0xff40a0c9),
-                              textStyle: const TextStyle(
-                                fontSize: 14,
-                                fontFamily: 'Lato',
-                              ),
-                            ),
-                            onPressed: () async {
-                              // Lo que se hará después de apretar el botón.
-                              Navigator.of(context).pushNamedAndRemoveUntil(
+        
+                    SizedBox(height: 15),
+                    //Input Contraseña
+                    TextField(
+                      controller: _password,
+                      obscureText: true,
+                      enableSuggestions: false,
+                      autocorrect: false,
+                      decoration: const InputDecoration(
+                        hintText: "Contraseña",
+                      ),
+                    ),
+        
+                    SizedBox(height: 15),
+                    //Input contraseña de nuevo
+                    TextField(
+                      controller: _checkPassword,
+                      enableSuggestions: false,
+                      autocorrect: false,
+                      obscureText: true,
+                      decoration: const InputDecoration(
+                        hintText: "Repita contraseña",
+                      ),
+                    ),
+                    
+                    SizedBox(height: 25),
+                    // Botón Registro
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        foregroundColor: Colors.white,
+                        backgroundColor: const Color(0xff40a0c9),
+                        textStyle: const TextStyle(
+                          fontSize: 14,
+                          fontFamily: 'Lato',
+                        ),
+                      ),
+                      onPressed: () async {
+                        // Lo que se hará después de apretar el botón.
+                        final email = _email.text;
+                        final checkPassword = _checkPassword.text;
+                        final password = _password.text;
+                        
+        
+                        try {
+                          if (checkPassword == password) {
+                            final userCredential = await FirebaseAuth.instance
+                                .createUserWithEmailAndPassword(
+                                    email: email, password: password);
+                            print(userCredential.toString());
+                            await mostrarDialogoInicioExitoso(
+                              context,
+                              '¡Se ha registrado exitosamente!',
+                            );
+                            Navigator.of(context).pushNamedAndRemoveUntil(
                                 rutaLogin,
                                 (route) => false,
-                              );
-                            },
-                            child: const Text('Si ya tienes una cuenta, ¡Ingresa aquí!'),
-                          ),
-                        ],
-                      ),
+                            );
+                          }
+                          else{
+                            await mostrarDialogoDeError(
+                              context,
+                              'Las contraseñas ingresadas no coinciden',
+                            );
+                          }
+
+                        } on FirebaseAuthException catch (e) {
+                          devtools.log(e.code);
+                          if (e.code == 'weak-password') {
+                            devtools.log("Contraseña muy débil");
+                          } else if (e.code == 'email-already-in-use') {
+                            devtools.log("El correo ingresado ya está en uso");
+                          } else if (e.code == 'invalid-email') {
+                            devtools.log("El correo ingresado es inválido");
+                          }
+                        }
+                      },
+                      child: const Text('REGISTRATE'),
                     ),
-                  ),
+                    
+                    SizedBox(height: 5),
+                    //Botón vuelta al módulo anterior
+                    TextButton(
+                      style: TextButton.styleFrom(
+                        //foregroundColor: Colors.white,
+                        //backgroundColor: const Color(0xff40a0c9),
+                        textStyle: const TextStyle(
+                          fontSize: 14,
+                          fontFamily: 'Lato',
+                        ),
+                      ),
+                      onPressed: () async {
+                        // Lo que se hará después de apretar el botón.
+                        Navigator.of(context).pushNamedAndRemoveUntil(
+                          rutaLogin,
+                          (route) => false,
+                        );
+                      },
+                      child:
+                          const Text('Si ya tienes una cuenta, ¡Inicia sesión aquí!'),
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
 }
+
+Future<void> mostrarDialogoDeError(
+    BuildContext context, 
+    String text, 
+) {
+
+  return showDialog(
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        title: const Text('Un error ocurrió'),
+        content: Text(text),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: const Text('Ok'),
+          )
+        ],
+      );
+  });
+
+}
+
+Future<void> mostrarDialogoInicioExitoso(
+    BuildContext context, 
+    String text, 
+) {
+
+  return showDialog(
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        title: const Text('Registro completado'),
+        content: Text(text),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: const Text('Ok'),
+          )
+        ],
+      );
+  });
+
+}
+
+

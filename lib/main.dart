@@ -10,7 +10,8 @@ import 'package:flutter_application_1/views/inicio.dart';
 import 'package:flutter_application_1/views/borrador_login.dart';
 import 'package:flutter_application_1/views/borrador_register.dart';
 import 'package:flutter_application_1/views/verificarCorreo.dart';
-
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'dart:developer' as devtools show log;
 
 Future main() async{
@@ -19,15 +20,22 @@ Future main() async{
   runApp(
     MaterialApp(
       title: 'Prototipo App Agua',
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        DefaultWidgetsLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
+      supportedLocales: [
+        Locale('en'), // English
+        Locale('es', ''), // Spanish
+      ],
       theme: ThemeData(
             appBarTheme: const AppBarTheme(
             backgroundColor: Color(0xFF75d7e6),
             foregroundColor: Colors.white, //here you can give the text color
             shadowColor: Color(0xFF40a0c9),
             surfaceTintColor: Color(0xFF40a0c9),
-            ),
-            textTheme: TextTheme(
-              bodyLarge: TextStyle(color: Colors.blue),
             ),
       ),
       home: const HomePage(),
@@ -39,6 +47,7 @@ Future main() async{
     ),
   );
 }
+
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});

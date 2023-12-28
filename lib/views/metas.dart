@@ -17,14 +17,14 @@ class _MetasState extends State<Metas> {
       initialIndex: 1,
       length: 4,
       child: Scaffold(
-        //body: Text('estas'),
+
         body: Column(
           children: [
             // Título de la sección
-            Align(
+            const Align(
               alignment: Alignment.topLeft,
               child: Padding(
-                padding: const EdgeInsets.only(left: 20.0, top: 40.0),
+                padding: EdgeInsets.only(left: 20.0, top: 40.0),
                 child: Text(
                   'Mis metas de ahorro',
                   style: TextStyle(
